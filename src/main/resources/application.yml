@@ -7,9 +7,9 @@ server:
 spring:
   datasource:
 #   6.0미만 버전은 url:jdbc:mysql://localhost:3306/white ,driver-class-name: com.mysql.jdbc.Driver 
-    url: jdbc:mysql://localhost:3306/white?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://192.168.0.84:3306/jawon?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: white
+    username: cos
     password: bitc5600
   jpa:
     open-in-view: false
