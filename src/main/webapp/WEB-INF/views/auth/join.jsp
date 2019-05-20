@@ -13,29 +13,37 @@
             padding: 0;
         }
         body{
+            text-align: center;
             background-color: rgb(250, 250, 250);
         }
+        main{
+            display: inline-block;
+            height: 800px
+        }
         .container{
-        	
             width: 700px;
-            margin: 0 auto;
-            text-align:center;
-        	
+            margin: 10px;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: center;
+            grid-column-gap: 30px;
+            grid-row-gap: 10px;
         }
-        .box {
-        	
+        .instagram{
+            grid-row: 1/4 span;
+            margin-top: 30%
         }
-
         .image{
             margin-top: 20px;
         }
         .bigbox{
-            width: 400px;
+            width: 100%;
             border: 1px solid lightgray;
+            grid-column: 2/1 span;
             text-align: center;
         }
         .smallbox{
-            width: 400px;
+            width: 100%;
             border: 1px solid lightgray;
             
         }
@@ -46,7 +54,6 @@
         .text{
             font-size: 12px;
             margin: 20px;
-            text-align:center;
         }
         .hr{
             width: 30%;
@@ -89,14 +96,18 @@
             color: white;
             padding: 9px 0px;
         }
+      .get{
+          display: grid;
+          grid-template-columns: auto auto auto;
+          grid-gap: 10px;
+      }
       footer{
         display: block;
         position: relative;
       }
-
-      p {
-      	width:400px;
-      }  
+      .under{
+        grid-column: 1/2 span;
+        
        
       }
       .under li{
@@ -109,42 +120,65 @@
           text-decoration: none;
           color: skyblue;
       }
-      .box {
-      	margin: 50px;
-      	width:400px;
-      	display:inline-block;
-      }
       
 
     </style>
 </head>
 <body>
+    <main>
     <div class="container">
-    	<div class="box">
+        <div class="instagram"><img src="/image/auth/insta.png" alt="x" width="300" height="500" ></div>
         <div class="bigbox">
-        	
             <div><img src="/image/auth/font.png" alt="x" class="image"></div>
-            <br />
+            <p class="text">친구들의 사진과 동영상을 보려면 가입하세요.</p>
             <div><a href="#"><i class="fab fa-facebook-square"> Facebook으로 로그인</i></a></div>
             <div class="text"><hr class="hr" />  또는  <hr class="hr" /></div>
             
             <table class="table">
                 <tr>
-                    <td><input type="text" name="username" placeholder="사용자 이름" ></td>
+                    <td><input type="text" name="" placeholder="휴대폰 번호 또는 이메일 주소" ></td>
                 </tr>
                 <tr>
-                    <td><input type="password" name="password" placeholder="비밀번호" ></td> 
+                    <td><input type="text" name="" placeholder="성명" ></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="" placeholder="사용자 이름" ></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="" placeholder="비밀번호" ></td> 
                 </tr>
             </table>
-            <input type="button" value="로그인">
-            <p class="text"><a href="#" class="under1">비밀번호를 잊으셨나요?</a></p>
+            <input type="button" value="가입">
+            <p class="text">가입하면 Instagram의 약관, 데이터 정책 및 쿠키 정책에 동의하게 됩니다.</p>
         </div>
         <div class="smallbox">
-        <div class=text>계정이 없으신가요? <a href="#" class="under1">회원가입</a></div>
+        <div class=text>계정이 있으신가요? <a href="#" class="under1">로그인</a></div>
         </div>
-    	</div>
+        <P class="text">앱을 다운로드 하세요</P>
+        <div class="get">
+            <div class="get1"><a href="#"><img src="/image/auth/apple.png" alt=""></a></div>
+            <div class="get1"><a href="#"><img src="/image/auth/google.png" alt=""></a></div>
+            <div class="get1"><a href="#"><img src="/image/auth/micro.png" alt=""></a></div>
+        </div>
+        <div class="under">
+                <ui>
+                <li><a href="#" class="under1">지원</a></li>
+                <li><a href="#" class="under1">홍보 센터</a></li>
+                <li><a href="#" class="under1">API</a></li>
+                <li><a href="#" class="under1">채용 정보</a></li>
+                <li><a href="#" class="under1">개인정보처리방침</a></li>
+                <li><a href="#" class="under1">약관</a></li>
+                <li><a href="#" class="under1">디렉터리</a></li>
+                <li><a href="#" class="under1">프로필</a></li>
+                <li><a href="#" class="under1">해시태그</a></li>
+                <li><a href="#" class="under1">언어</a></li>
+                <li><a href="#" class="under1">INSTGRAM 정보</a></li>
+            </ui>
+        </div> 
     </div>
-
+               
+        
+</main>
 
 </body>
 </html>

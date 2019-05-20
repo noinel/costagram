@@ -27,15 +27,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
 	}
 	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests()
-		.antMatchers("/follow/**","/user/**").authenticated()
-		.anyRequest().permitAll()
-		.and().formLogin().loginPage("/auth/login").loginProcessingUrl("/auth/LoginProc")
-		;
-		
+		http.authorizeRequests().antMatchers("/user/**", "/follow/**", "/images/**").authenticated()
+				.anyRequest().permitAll()
+				.and()
+				.formLogin()
+				.loginPage("/auth/login")
+				.loginProcessingUrl("/auth/loginProc")
+				.defaultSuccessUrl("/images");
 	}
+	
 	
 }

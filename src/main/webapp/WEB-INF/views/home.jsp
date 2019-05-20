@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-home 입니다.
+<img src="/image/apple.png" />
 </body>
 </html>
