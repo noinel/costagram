@@ -12,6 +12,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
@@ -20,9 +22,11 @@ public class Follow {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@JsonIgnoreProperties({"password","name","email","website","bio","gender","phone","createDate","updateDate"})
 	@ManyToOne
 	@JoinColumn(name="fromUser")
 	private User fromUser;
+	@JsonIgnoreProperties({"password","name","email","website","bio","gender","phone","createDate","updateDate"})
 	@ManyToOne
 	@JoinColumn(name="toUser")
 	private User toUser;

@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
@@ -22,11 +25,13 @@ public class Likes {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnoreProperties({"password","name","email","website","bio","gender","phone","createDate","updateDate"})
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="userId")
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	@JoinColumn(name="imageId")
 	private Image image;
 	

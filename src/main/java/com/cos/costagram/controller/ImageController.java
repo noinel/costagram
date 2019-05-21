@@ -4,20 +4,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cos.costagram.model.Follow;
 import com.cos.costagram.model.Image;
 import com.cos.costagram.model.Tag;
 import com.cos.costagram.model.User;
+import com.cos.costagram.repository.FollowRepository;
 import com.cos.costagram.repository.ImageRepository;
 import com.cos.costagram.repository.TagRepository;
 import com.cos.costagram.Service.CustomUserDetails;
@@ -28,6 +32,8 @@ public class ImageController {
 	private ImageRepository imageRepository;
 	@Autowired
 	private TagRepository tagRepository;
+	@Autowired
+	private FollowRepository followRepository;
 
 	@GetMapping("/home")
 	public String home() {
@@ -35,8 +41,28 @@ public class ImageController {
 	}
 
 	@GetMapping("/images")
-	public  String image(@AuthenticationPrincipal CustomUserDetails userDetail) {
-		// System.out.println(userDetail.getUsername());
+	public  String image(@AuthenticationPrincipal CustomUserDetails userDetail, Model model) {
+		
+		//1. user(one)
+		User user  = userDetail.getUser();
+		System.out.println(user);
+				
+		//2.User:follow(List)
+		List<Follow> followList = followRepository.findByFromUserId(user.getId());
+		//3.User:Follow:Image(List)4 . Follow:image:Like(count)(One)
+		List<Image> imageList = new ArrayList<Image>();
+		
+		for(Follow f : followList) {
+			List<Image> list= imageRepository.findByUserId(f.getToUser().getId());
+			for(Image i : list)
+			{
+				imageList.add(i);
+			}
+			
+		}
+		//4.Model에 담기
+		model.addAttribute("user", user);
+		model.addAttribute("imageList", imageList);
 		return "images/image";
 	}
 

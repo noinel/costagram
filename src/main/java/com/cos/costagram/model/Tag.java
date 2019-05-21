@@ -27,7 +27,7 @@ public class Tag {
 	
 	private String name;
 	
-	@JsonIgnoreProperties({"username","name","email","website","bio","gender","phone","createDate","updateDate"})
+	@JsonIgnoreProperties({"password","name","email","website","bio","gender","phone","createDate","updateDate"})
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
 	private User user;
