@@ -32,8 +32,6 @@ public class DummyController {
 	@Autowired
 	private ImageRepository imageRepository;
 	@Autowired
-	private TagRepository tagRepository;
-	@Autowired
 	private FollowRepository followRepository;
 	
 	@Autowired
@@ -46,6 +44,12 @@ public class DummyController {
 		user.setPassword(encPassword);
 		userRepository.save(user);
 		return user;
+	}
+	@GetMapping("/testing")
+	public @ResponseBody List<Image> image2(int num) {
+		List<Image> list= imageRepository.findByUserId(num);
+		System.out.println("num:"+num);
+		return list;
 	}
 	
 	@GetMapping("/images")
